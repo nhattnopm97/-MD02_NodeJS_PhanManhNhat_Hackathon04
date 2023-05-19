@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container .header {
+      text-align: center;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      font-weight: bold;
+    }
+    .container .nav {
+      text-align: center;
+      height: 40px;
+      background-color: aqua;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      font-weight: bold;
+    }
+    .container .round {
+      text-align: center;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      font-weight: bold;
+    }
+    .player1,
+    .player2,
+    .player3,
+    .player4,
+    .xxx {
+      width: 19%;
+    }
+
+    .btncreate {
+      margin-top: 20px;
+      background-color: dodgerblue;
+      margin-left: 100px;
+      padding: 10px;
+      border: none;
+      color: aliceblue;
+      border-radius: 10px;
+    }
+    .btncreate:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  </style>
+  <body>
+    <div id="container" class="container">
+      <div id="header" class="header">
+        <div class="xxx">#</div>
+        <div id="namePlayer1" class="player1">1</div>
+        <div id="namePlayer2" class="player2">2</div>
+        <div id="namePlayer3" class="player3">3</div>
+        <div id="namePlayer4" class="player4">4</div>
+      </div>
+      <div id="nav" class="nav">
+        <div id="totalScore" class="xxx">Sum of score</div>
+        <div id="totalScorePlayer1" class="player1">0</div>
+        <div id="totalScorePlayer2" class="player2">0</div>
+        <div id="totalScorePlayer3" class="player3">0</div>
+        <div id="totalScorePlayer4" class="player4">0</div>
+      </div>
+      <hr />
+      <div id="roundElement">
+        <div id="round" class="round">
+          <div class="xxx">Round 1</div>
+          <input id="scorePlayer1" class="player1" type="number" />
+          <input id="scorePlayer2" class="player2" type="number" />
+          <input id="scorePlayer3" class="player3" type="number" />
+          <input id="scorePlayer4" class="player4" type="number" />
+        </div>
+        <hr />
+      </div>
+      <button class="btncreate" onclick="addRound()">Add round</button>
+    </div>
+    <script src="/game.js"></script>
+  </body>
+</html>

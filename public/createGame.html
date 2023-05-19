@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCORE KEEPER</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin-left: 100px;
+    }
+    .container {
+      margin-left: 100px;
+      max-width: 70%;
+    }
+    .container input {
+      padding: 5px;
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 5px;
+    }
+    .btncreate {
+      margin-top: 20px;
+      background-color: dodgerblue;
+      margin-left: 100px;
+      padding: 10px;
+      border: none;
+      color: aliceblue;
+      border-radius: 10px;
+    }
+    .btncreate:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .notify {
+      color: red;
+    }
+  </style>
+  <body>
+    <h1>SCORE KEEPER</h1>
+    <br />
+    <div class="container">
+      <input
+        type="text"
+        name="player1"
+        id="player1"
+        class="player1"
+        placeholder="player1"
+        value=""
+      />
+      <br />
+
+      <input
+        type="text"
+        name="player2"
+        id="player2"
+        class="player2"
+        placeholder="player2"
+        value=""
+      />
+      <br />
+
+      <input
+        type="text"
+        name="player3"
+        id="player3"
+        class="player3"
+        placeholder="player3"
+        value=""
+      />
+      <br />
+
+      <input
+        type="text"
+        name="player4"
+        id="player4"
+        class="player4"
+        placeholder="player4"
+        value=""
+      />
+      <p id="notify" class="notify"></p>
+    </div>
+
+    <button class="btncreate" onclick="addGame()">Create game</button>
+    <script src="/createGame.js"></script>
+  </body>
+</html>
