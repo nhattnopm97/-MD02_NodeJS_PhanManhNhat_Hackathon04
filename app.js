@@ -53,33 +53,56 @@ app.post("/api/v1/round", (req, res) => {
 });
 
 app.put("/api/v1/round/:id", (req, res) => {
+  console.log(req.body);
   const id = req.params.id;
   let rounds = JSON.parse(fs.readFileSync("./data/round.json"));
-  const { name, score, message } = req.body;
-  let findRound = rounds.findIndex((round) => round.id === +id);
-  console.log("aaaaaa", rounds[findRound].player[0].score.lenth);
-  if (rounds[findRound].player[0].score.lenth === 4) {
-    res.json({ message: "maximunround is not allowed pass 4 round!" });
+  const message = req.body.message;
+  let indexRound = rounds.findIndex((round) => round.id === +id);
+  console.log("aaaaaa", rounds[indexRound].player[0].score.length);
+  if (
+    rounds[indexRound].player[0].score.length === 5 &&
+    message === "addRound"
+  ) {
+    res.json({ message: "maximunround is not allowed pass 5 round!" });
     return;
   }
-  if (message === "addRound" && findRound !== -1) {
-    rounds[findRound].player[0].score.push(0);
-    rounds[findRound].player[1].score.push(0);
-    rounds[findRound].player[2].score.push(0);
-    rounds[findRound].player[3].score.push(0);
+  if (message === "addRound" && indexRound !== -1) {
+    rounds[indexRound].player[0].score.push(0);
+    rounds[indexRound].player[1].score.push(0);
+    rounds[indexRound].player[2].score.push(0);
+    rounds[indexRound].player[3].score.push(0);
     fs.writeFileSync("./data/round.json", JSON.stringify(rounds));
     res.json({ message: "Add rounds successfully!" });
     return;
   }
-  let updateRound = {
-    id,
-    player: [name, score],
-  };
-  console.log(findRound);
-  if (findRound !== -1) {
+  if (message === "changeScore") {
+    const {
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message,
+    } = req.body;
+    let information = {
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message,
+    };
+    rounds[indexRound].player[0].score[index] = scorePlayer_1;
+    rounds[indexRound].player[1].score[index] = scorePlayer_2;
+    rounds[indexRound].player[2].score[index] = scorePlayer_3;
+    rounds[indexRound].player[3].score[index] = scorePlayer_4;
+    fs.writeFileSync("./data/round.json", JSON.stringify(rounds));
+    res.json({ message: "changed scores successfully!" });
+  }
+  if (indexRound !== -1) {
     console.log(updateRound);
-    console.log(findRound);
-    rounds[findRound] = updateRound;
+    console.log(indexRound);
+    rounds[indexRound] = updateRound;
   } else {
     res.json({ message: "Not found" });
   }

@@ -38,25 +38,25 @@ function loadPage() {
       `;
       let resultRound = "";
       for (let i = 0; i < response.player[0].score.length; i++) {
-        totalScorePlayer1 += response.player[0].score[i];
-        totalScorePlayer2 += response.player[1].score[i];
-        totalScorePlayer3 += response.player[2].score[i];
-        totalScorePlayer4 += response.player[3].score[i];
+        totalScorePlayer1 += +response.player[0].score[i];
+        totalScorePlayer2 += +response.player[1].score[i];
+        totalScorePlayer3 += +response.player[2].score[i];
+        totalScorePlayer4 += +response.player[3].score[i];
         resultRound += `
         <div id="round" class="round">
           <div class="xxx">Round ${i + 1}</div>
           <input id="scorePlayer_1_${i}" class="player1" type="number" value=${
           response.player[0].score[i]
-        } onclick=handleInputChange${i}(${i}) />
+        } onchange=handleInputChange${i}(${i}) />
           <input id="scorePlayer_2_${i}" class="player2" type="number" value=${
           response.player[1].score[i]
-        } onclick=handleInputChange${i}(${i}) />
+        } onchange=handleInputChange${i}(${i}) />
           <input id="scorePlayer_3_${i}" class="player3" type="number" value=${
           response.player[2].score[i]
-        } onclick=handleInputChange${i}(${i}) />
+        } onchange=handleInputChange${i}(${i}) />
           <input id="scorePlayer_4_${i}" class="player4" type="number" value=${
           response.player[3].score[i]
-        } onclick=handleInputChange${i}(${i}) />
+        } onchange=handleInputChange${i}(${i}) />
         </div>
         <hr />
         `;
@@ -77,11 +77,14 @@ function addRound() {
   fetch(`/api/v1/round/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: null, score: null, message: "addRound" }),
+    body: JSON.stringify({ message: "addRound" }),
   })
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
+      if (response.message === "maximunround is not allowed pass 5 round!") {
+        alert(response.message);
+      }
       loadPage();
     })
     .catch((err) => console.log(err));
@@ -89,13 +92,141 @@ function addRound() {
 
 function handleInputChange0(index) {
   console.log("handleInputChange0", index);
+  let scorePlayer_1 = document.getElementById(`scorePlayer_1_${index}`).value;
+  let scorePlayer_2 = document.getElementById(`scorePlayer_2_${index}`).value;
+  let scorePlayer_3 = document.getElementById(`scorePlayer_3_${index}`).value;
+  let scorePlayer_4 = document.getElementById(`scorePlayer_4_${index}`).value;
+  console.log(scorePlayer_1, scorePlayer_2, scorePlayer_3, scorePlayer_4);
+  fetch(`/api/v1/round/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message: "changeScore",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      loadPage();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 function handleInputChange1(index) {
-  console.log("handleInputChange1", index);
+  console.log("handleInputChange0", index);
+  let scorePlayer_1 = document.getElementById(`scorePlayer_1_${index}`).value;
+  let scorePlayer_2 = document.getElementById(`scorePlayer_2_${index}`).value;
+  let scorePlayer_3 = document.getElementById(`scorePlayer_3_${index}`).value;
+  let scorePlayer_4 = document.getElementById(`scorePlayer_4_${index}`).value;
+  console.log(scorePlayer_1, scorePlayer_2, scorePlayer_3, scorePlayer_4);
+  fetch(`/api/v1/round/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message: "changeScore",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      loadPage();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 function handleInputChange2(index) {
-  console.log("handleInputChange2", index);
+  console.log("handleInputChange0", index);
+  let scorePlayer_1 = document.getElementById(`scorePlayer_1_${index}`).value;
+  let scorePlayer_2 = document.getElementById(`scorePlayer_2_${index}`).value;
+  let scorePlayer_3 = document.getElementById(`scorePlayer_3_${index}`).value;
+  let scorePlayer_4 = document.getElementById(`scorePlayer_4_${index}`).value;
+  console.log(scorePlayer_1, scorePlayer_2, scorePlayer_3, scorePlayer_4);
+  fetch(`/api/v1/round/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message: "changeScore",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      loadPage();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 function handleInputChange3(index) {
-  console.log("handleInputChange3", index);
+  console.log("handleInputChange0", index);
+  let scorePlayer_1 = document.getElementById(`scorePlayer_1_${index}`).value;
+  let scorePlayer_2 = document.getElementById(`scorePlayer_2_${index}`).value;
+  let scorePlayer_3 = document.getElementById(`scorePlayer_3_${index}`).value;
+  let scorePlayer_4 = document.getElementById(`scorePlayer_4_${index}`).value;
+  console.log(scorePlayer_1, scorePlayer_2, scorePlayer_3, scorePlayer_4);
+  fetch(`/api/v1/round/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message: "changeScore",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      loadPage();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+function handleInputChange4(index) {
+  console.log("handleInputChange0", index);
+  let scorePlayer_1 = document.getElementById(`scorePlayer_1_${index}`).value;
+  let scorePlayer_2 = document.getElementById(`scorePlayer_2_${index}`).value;
+  let scorePlayer_3 = document.getElementById(`scorePlayer_3_${index}`).value;
+  let scorePlayer_4 = document.getElementById(`scorePlayer_4_${index}`).value;
+  console.log(scorePlayer_1, scorePlayer_2, scorePlayer_3, scorePlayer_4);
+  fetch(`/api/v1/round/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scorePlayer_1,
+      scorePlayer_2,
+      scorePlayer_3,
+      scorePlayer_4,
+      index,
+      message: "changeScore",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      loadPage();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
